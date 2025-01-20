@@ -2,7 +2,7 @@
     This module contains all the functions used in the tic_tac_toe.py file.
 """
 
-import subprocess as sp
+import os
 
 
 def option_validator():
@@ -75,7 +75,7 @@ def display(grid_map):
     """
 
     # clean up the display first:
-    sp.run('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
     # it took me hours to come up with this abomination
     for i in range(0, 6, 1):
@@ -155,7 +155,7 @@ def show_empty_grid():
         In case the player starts first, this shows an empty grid.
     """
 
-    sp.run('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
     bar = 24 * '-'
     for i in range(20):
         if i == 6 or i == 13:
