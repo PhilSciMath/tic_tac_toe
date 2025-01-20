@@ -57,9 +57,7 @@ while True:
         col = int(col) - 1
 
         # we don't update the grid unless the chosen position is empty
-        if fn.check_empty(grid, row, col):
-            pass
-        else:
+        if not fn.check_empty(grid, row, col):
             print("The position is not empty!\n")
             continue
 

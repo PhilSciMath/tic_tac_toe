@@ -6,7 +6,10 @@ import os
 
 
 def option_validator():
-    """ Validates player input """
+    """
+        Validates player input. Refuses anything not in the list of options
+        and returns the selected option, a single char.
+    """
 
     options = ['1', '2', '3', 'q']
     selected = ' '
@@ -17,7 +20,10 @@ def option_validator():
 
 
 def grid_update(grid, row, col, char):
-    """ This function updates the grid with the given positions. """
+    """
+        This function updates the grid with the given positions. It returns
+        the updated grid.
+    """
 
     if grid[row][col] == ' ':
         grid[row][col] = char
@@ -26,7 +32,10 @@ def grid_update(grid, row, col, char):
 
 
 def check_empty(grid, row, col):
-    """ This function checks if the chosen position is empty. """
+    """
+        This function checks if the chosen position is empty. It returns True
+        if empty, False if not empty.
+    """
 
     if grid[row][col] == ' ':
         return True
@@ -35,7 +44,10 @@ def check_empty(grid, row, col):
 
 
 def check_gameover(grid, char):
-    """ This function checks all the conditions for a gameover. """
+    """
+        This function checks all the conditions for a gameover. It returns
+        True if any of the possible states are met.
+    """
 
     # checking the rows
     for row in grid:
@@ -96,7 +108,7 @@ def grid_mapping(grid):
     """
 
     # I want the game to look bigger in the terminal
-    x = [
+    x_cell = [
         "#    #",
         " #  # ",
         "  ##  ",
@@ -105,7 +117,7 @@ def grid_mapping(grid):
         "#    #"
         ]
 
-    o = [
+    o_cell = [
         " #### ",
         "#    #",
         "#    #",
@@ -114,7 +126,7 @@ def grid_mapping(grid):
         " #### "
         ]
 
-    e = [
+    empty_cell = [
         "      ",
         "      ",
         "      ",
@@ -123,7 +135,7 @@ def grid_mapping(grid):
         "      ",
         ]
 
-    # this matrix will be filled with the lists x, o and e defined above
+    # this matrix will be filled with the characters above
     matrix = [
         [0, 0, 0],
         [0, 0, 0],
@@ -134,11 +146,11 @@ def grid_mapping(grid):
     for i in range(len(grid)):
         for j in range(len(grid)):
             if grid[i][j] == 'x':
-                matrix[i][j] = x
+                matrix[i][j] = x_cell
             elif grid[i][j] == 'o':
-                matrix[i][j] = o
+                matrix[i][j] = o_cell
             else:
-                matrix[i][j] = e
+                matrix[i][j] = empty_cell
 
     # unpacks the matrix into a simple list
     grid_map = []
